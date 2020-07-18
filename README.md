@@ -14,7 +14,7 @@ Once cloned, open the dexom folder in matlab and run the initialization script `
 
 ```
 >> dexomInit;
-DEXOM: (EX)traction of Optimal Metabolic-networks (v0.1.0)
+DEXOM: Diversity-based enumeration of optimal context-specific metabolic networks (v0.1.0)
 This library was tested using Matlab 2015b, CPLEX v12.8 and COBRA Toolbox v3.0.6.
 
 > Initializing DEXOM library for Matlab
