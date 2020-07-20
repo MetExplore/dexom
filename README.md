@@ -3,6 +3,8 @@
 
 DEXOM is a Matlab library for the reconstruction and enumeration of diverse optimal context-specific metabolic networks. It requires COBRA Toolbox (included as submodule) and a MILP solver (CPLEX, Gurobi).
 
+![Overview](https://github.com/MetExplore/dexom/raw/master/assets/overview.png)
+
 ## Installation
 
 Clone the project with the --recursive argument to clone also the COBRA Toolbox submodule.
