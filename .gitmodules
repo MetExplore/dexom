@@ -1,0 +1,6 @@
+[submodule "modules/cobratoolbox"]
+	path = modules/cobratoolbox
+	url = https://github.com/MetExplore/cobratoolbox-lib.git
+[submodule "modules/evaluation"]
+	path = modules/evaluation
+	url = https://github.com/MetExplore/dexom-evaluation.git
