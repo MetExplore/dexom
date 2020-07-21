@@ -7,12 +7,15 @@ DEXOM is a Matlab library for the reconstruction and enumeration of diverse opti
 
 ## Installation
 
-Clone the project with the --recursive argument to clone also the COBRA Toolbox submodule.
+In order to use DEXOM, you need a compatible version of Matlab (recommended version >= 2015), CPLEX (recommended version >= 12.8), and COBRA Toolbox (recommended v3.0.6). This repository includes a bundled version of COBRA Toolbox v3.0.6 with minor changes to facilitate reproducibility of the experiments and avoid automatic updates that can introduce incompatibilities. In order to clone DEXOM with the embedded COBRA v3.0.6, use the following git command:
+
 ```
-git clone --recursive https://github.com/MetExplore/dexom.git
+git clone --recurse-submodules="modules/cobratoolbox" https://github.com/MetExplore/dexom.git
 ```
 
-Once cloned, open the dexom folder in matlab and run the initialization script `dexomInit.m`. By default, it tries to use any COBRA Toolbox in the Matlab's path, and if COBRA is not detected, the embedded version is added to the path.
+Once cloned, open the dexom folder in matlab and run the initialization script `dexomInit.m`. By default, it tries to use any COBRA Toolbox in the Matlab's path, and if COBRA is not detected, the embedded version is added to the path. In order to prevent incompatibilities with your current COBRA version, it is recommended to remove all COBRA folders from your Matlab's path before initializing DEXOM, in order to force DEXOM to use the embedded COBRA Toolbox.
+
+In order to initialize DEXOM, run the following command in the root folder of the project from Matlab:
 
 ```
 >> dexomInit;
