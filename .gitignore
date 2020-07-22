@@ -2,6 +2,8 @@
 # Created by https://www.gitignore.io/api/linux,matlab,windows
 # Edit at https://www.gitignore.io/?templates=linux,matlab,windows
 
+*.old
+
 ### Python ###
 .ipynb_checkpoints/
 

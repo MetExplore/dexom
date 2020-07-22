@@ -5,6 +5,7 @@ function dexomInit(cobraToolboxInitMode)
 % of COBRA Toolbox (this is the recommended setting).
 
     global SOLVERS;
+    global CBT_MILP_SOLVER;
     
     % By default don't initialize the embedded COBRA Toolbox
     % cobraToolboxInitMode:
@@ -47,7 +48,15 @@ function dexomInit(cobraToolboxInitMode)
     % Use the embedded version
     if cobraToolboxInitMode == 2
         % Remove any directory related to cobratoolbox in the path
-        removeCobraFromPath();
+        fprintf(' + Trying to remove the installed COBRA Toolbox from the path...');
+        removedPath = removeCobraFromPath('initCobraToolbox');
+        fprintf(' %d entries removed.\n', numel(removedPath));
+        if numel(removedPath) > 0
+            saveArrayStrings('cobrapath.old', removedPath); 
+            fprintf('\t - In order to use your previous COBRA Toolbox, you need to reinstall it with initCobraToolbox\n');
+            fprintf('\t - You can automatically restore your previous COBRA with restoreCobraToolboxPath()\n');
+            pause(2.0);
+        end
         cd([PROJDIR filesep 'modules' filesep 'cobratoolbox'])
         initializeCobraToolboxLib();
         cd(PROJDIR);
@@ -72,7 +81,7 @@ function dexomInit(cobraToolboxInitMode)
     end
     
     % Run a small battery of tests
-    fprintf('> Testing DEXOM ... ');
+    fprintf('> Testing DEXOM (solver %s) ... ', CBT_MILP_SOLVER);
     if runTests() == 1
         fprintf('Done.\n> DEXOM is ready to use.\n');
     else
