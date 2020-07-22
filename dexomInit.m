@@ -13,7 +13,7 @@ function dexomInit(cobraToolboxInitMode)
     % load the embedded version
     % - 2: try to load the embedded version 
     if ~exist('cobraToolboxInitMode','var') || isempty(cobraToolboxInitMode)
-        cobraToolboxInitMode = 1;
+        cobraToolboxInitMode = 2;
     end
     
     ver = dexomVersion();
@@ -44,23 +44,31 @@ function dexomInit(cobraToolboxInitMode)
         end
     end
     
+    % Use the embedded version
     if cobraToolboxInitMode == 2
+        % Remove any directory related to cobratoolbox in the path
+        removeCobraFromPath();
         cd([PROJDIR filesep 'modules' filesep 'cobratoolbox'])
         initializeCobraToolboxLib();
         cd(PROJDIR);
     end
     
     % Set CPLEX as the main solver if it's installed
+    sOk = 0;
     if SOLVERS.ibm_cplex.installed
-        changeCobraSolver('ibm_cplex', 'all', 0);
+        [sOk, sInstalled] = changeCobraSolver('ibm_cplex', 'all', 0);
         v = getCobraSolverVersion('ibm_cplex', 0);
         fprintf('> IBM CPLEX selected as the default solver (v%s)\n', v);
     elseif SOLVERS.gurobi.installed
-        changeCobraSolver('gurobi', 'all', 0);
+        [sOk, sInstalled] = changeCobraSolver('gurobi', 'all', 0);
         v = getCobraSolverVersion('gurobi', 0);
         fprintf('> GUROBI selected as the default solver (v%s)\n', v);    
     else
         warning('> CPLEX or GUROBI not detected in the system. Use changeCobraSolver to manually specify the solver to be used');
+    end
+    
+    if sOk == 0
+        warning('> The selected solver is not working properly\n');
     end
     
     % Run a small battery of tests
@@ -68,6 +76,6 @@ function dexomInit(cobraToolboxInitMode)
     if runTests() == 1
         fprintf('Done.\n> DEXOM is ready to use.\n');
     else
-        warning('DEXOM test(s) not passed. Check if everything is well configured.');
+        fprintf('DEXOM test(s) not passed. Check if everything is well configured.\n');
     end
 end
