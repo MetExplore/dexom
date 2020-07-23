@@ -37,7 +37,7 @@ During the initialization, DEXOM launches a few quick tests for network reconstr
 
 If you find this software useful, please consider citing it as:
 
-> Rodriguez-Mier, P., Poupin, N., de Blasio, C., Le Cam, L. & Jourdan, F. (2020). DEXOM: Diversity-based enumeration of optimal context-specific metabolic networks. BioRxiv **[Preprint]**. Available from: https://doi.org/10.1101/2020.07.17.208918
+> Rodriguez-Mier, P., Poupin, N., de Blasio, C., Le Cam, L. & Jourdan, F. DEXOM: Diversity-based enumeration of optimal context-specific metabolic networks. BioRxiv **[Preprint]**. July 17, 2020. Available from: https://doi.org/10.1101/2020.07.17.208918
 
 ```
 @article {RodriguezMier2020,
