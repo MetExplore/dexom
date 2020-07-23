@@ -12,12 +12,13 @@ function dexomInit(cobraToolboxInitMode)
     % - 0: don't load cobra 
     % - 1: try to see if initCobraToolbox is in the path. If not,
     % load the embedded version
-    % - 2: try to load the embedded version 
+    % - 2: force load the embedded version 
     if ~exist('cobraToolboxInitMode','var') || isempty(cobraToolboxInitMode)
         cobraToolboxInitMode = 2;
     end
     
     ver = dexomVersion();
+    removedPath = [];
     fprintf('\nDEXOM: Diversity-based Extraction of Optimal Metabolic-networks (v%s)\n', ver);
     fprintf('This version was tested with Matlab 2015b (CPLEX v12.8), 2018a (CPLEX v12.9), 2018b (CPLEX v12.8) and COBRA Toolbox v3.0.6 on Windows 10.\n\n');
     fprintf('> Initializing DEXOM library for Matlab\n');
@@ -54,8 +55,7 @@ function dexomInit(cobraToolboxInitMode)
         if numel(removedPath) > 0
             saveArrayStrings('cobrapath.old', removedPath); 
             fprintf('\t - In order to use your previous COBRA Toolbox, you need to reinstall it with initCobraToolbox\n');
-            fprintf('\t - You can automatically restore your previous COBRA with restoreCobraToolboxPath()\n');
-            pause(2.0);
+            fprintf('\t - Or you can automatically restore your previous COBRA with restoreCobraToolboxPath()\n');
         end
         cd([PROJDIR filesep 'modules' filesep 'cobratoolbox'])
         initializeCobraToolboxLib();
@@ -85,6 +85,13 @@ function dexomInit(cobraToolboxInitMode)
     if runTests() == 1
         fprintf('Done.\n> DEXOM is ready to use.\n');
     else
-        fprintf('DEXOM test(s) not passed. Check if everything is well configured.\n');
+        fprintf('DEXOM test(s) not passed\n');
+        warning('There is a problem with your setup');
+    end
+    if numel(removedPath) > 0
+        fprintf('\nNOTE: Your previous installation of COBRA Toolbox\n');
+        fprintf('has been replaced with the embedded COBRA Toolbox v3.0.6.\n');
+        fprintf('If you want to replace it with your previous COBRA,\n');
+        fprintf('just call the restoreCobraToolboxPath function.\n');  
     end
 end

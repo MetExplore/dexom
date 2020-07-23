@@ -6,9 +6,10 @@ function restoreCobraToolboxPath()
     fid = fopen(tempFile);
     while ~feof(fid)
         fpath = fgetl(fid);
+        fprintf('Adding %s\n', fpath);
         addpath(fpath);
     end
     fclose(fid);
-    removeCobraFromPath('initializeCobraToolboxLib');
+    removeCobraFromPath('initializeCobraToolboxLib', 1);
 end
 
