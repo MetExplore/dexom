@@ -33,3 +33,23 @@ This version was tested with Matlab 2015b (CPLEX v12.8), 2018a (CPLEX v12.9),
 
 During the initialization, DEXOM launches a few quick tests for network reconstruction and enumeration. After getting the previous message, the library is ready to use.
 
+## Citation
+
+If you find this software useful, please consider citing it as:
+
+> Rodriguez-Mier, P., Poupin, N., de Blasio, C., Le Cam, L. & Jourdan, F. (2020). DEXOM: Diversity-based enumeration of optimal context-specific metabolic networks. BioRxiv **[Preprint]**. Available from: https://doi.org/10.1101/2020.07.17.208918
+
+```
+@article {RodriguezMier2020,
+	author = {Rodr{\'\i}guez-Mier, Pablo and Poupin, Nathalie and de Blasio, Carlo and Le Cam, Laurent and Jourdan, Fabien},
+	title = {DEXOM: Diversity-based enumeration of optimal context-specific metabolic networks},
+	year = {2020},
+	doi = {10.1101/2020.07.17.208918},
+	publisher = {Cold Spring Harbor Laboratory},
+	URL = {https://www.biorxiv.org/content/early/2020/07/17/2020.07.17.208918},
+	journal = {bioRxiv}
+}
+```
+
+
+
