@@ -1,4 +1,4 @@
-function dexomInit(cobraToolboxInitMode)
+function dexomInit(cobraToolboxInitMode, verbose)
 % Initializes DEXOM for diversity-based enumeration of optimal
 % context-specific metabolic networks. It requires COBRA Toolbox.
 % If COBRA is not in the path, it initializes the embedded version
@@ -6,16 +6,17 @@ function dexomInit(cobraToolboxInitMode)
 
     global SOLVERS;
     global CBT_MILP_SOLVER;
+    global ENV_VARS;
     
-    % By default don't initialize the embedded COBRA Toolbox
-    % cobraToolboxInitMode:
-    % - 0: don't load cobra 
-    % - 1: try to see if initCobraToolbox is in the path. If not,
-    % load the embedded version
-    % - 2: force load the embedded version 
+    printLevel = ENV_VARS.printLevel;
+    
     if ~exist('cobraToolboxInitMode','var') || isempty(cobraToolboxInitMode)
-        cobraToolboxInitMode = 2;
+        cobraToolboxInitMode = 0;
     end
+    if ~exist('verbose','var')
+       verbose = 0; 
+    end
+    ENV_VARS.printLevel = verbose;
     
     ver = dexomVersion();
     removedPath = [];
@@ -29,17 +30,17 @@ function dexomInit(cobraToolboxInitMode)
     addpath(genpath([PROJDIR filesep 'evaluation']));
     cd(PROJDIR);
     fprintf(' + Adding external dependencies...\n');
-    if cobraToolboxInitMode == 0 && isempty(SOLVERS)
-        error('COBRA Toolbox not initialized in the system. Use dexomInit(1) to try to load the installed or the embedded COBRA Toolbox.');
+    if cobraToolboxInitMode == -1 && isempty(SOLVERS)
+        error('COBRA Toolbox not initialized in the system. Use dexomInit(0) to load the embedded COBRA Toolbox or dexomInit(1) to load an installed version of COBRA Toolbox.');
     end
     if cobraToolboxInitMode == 1
-        fprintf('\t> Trying to initialize COBRA Toolbox ... ');
+        fprintf('> Trying to initialize COBRA Toolbox ... ');
         if isempty(SOLVERS)
             try
                 initCobraToolbox(false);
             catch
                 fprintf('Failed (COBRA Toolbox not in the path)\n');
-                cobraToolboxInitMode = 2;
+                cobraToolboxInitMode = 0;
             end
         else
             fprintf('Done (already loaded)\n');
@@ -47,9 +48,9 @@ function dexomInit(cobraToolboxInitMode)
     end
     
     % Use the embedded version
-    if cobraToolboxInitMode == 2
+    if cobraToolboxInitMode == 0
         % Remove any directory related to cobratoolbox in the path
-        fprintf(' + Trying to remove the installed COBRA Toolbox from the path...');
+        fprintf(' + Checking and replacing previous COBRA Toolbox installations...');
         removedPath = removeCobraFromPath('initCobraToolbox');
         fprintf(' %d entries removed.\n', numel(removedPath));
         if numel(removedPath) > 0
@@ -58,6 +59,7 @@ function dexomInit(cobraToolboxInitMode)
             fprintf('\t - Or you can automatically restore your previous COBRA with restoreCobraToolboxPath()\n');
         end
         cd([PROJDIR filesep 'modules' filesep 'cobratoolbox'])
+        fprintf(' + Initializing the embedded COBRA Toolbox (use dexomInit(0,1) to show log)...\n');
         initializeCobraToolboxLib();
         cd(PROJDIR);
     end
@@ -94,4 +96,5 @@ function dexomInit(cobraToolboxInitMode)
         fprintf('If you want to replace it with your previous COBRA,\n');
         fprintf('just call the restoreCobraToolboxPath function.\n');  
     end
+    ENV_VARS.printLevel = printLevel;
 end
