@@ -54,7 +54,7 @@ methodOptions.RLindex = 1:length(model.rxns);
 results = dexom(model, methodOptions, enumOptions);
 ```
 
-The method returns a structure with many outputs that are usefu for posterior analysis of the results. In order to extract the unique solutions as row binary vectors (indicating with 1s the selected reactions from the model), you can use the method `getUniqueAcceptedSolutions`:
+The method returns a structure with the results and many other useful output values for posterior analysis of the results. In order to extract the unique solutions as row binary vectors (indicating with 1s the selected reactions from the model), you can use the method `getUniqueAcceptedSolutions`:
 
 ```matlab
 solutions = getUniqueAcceptedSolutions(results);
@@ -68,6 +68,8 @@ cOpts.method='fastcc';
 [~,fluxConsistentRxnBool] = findFluxConsistentSubset(cModel1, cOpts);
 assert (sum(fluxConsistentRxnBool == 0) == 0)
 ```
+
+The algorithm is highly customizable. Options are divided in two different structures, one containing the options for the context-specific method, and another with the configuration for the enumeration of alternative optimal solutions. For more information about the possible parameters of the method, see [dexomDefaultOptions.m](https://github.com/MetExplore/dexom/blob/master/src/methods/dexom/dexomDefaultOptions.m), and for the possible parameters to adjust the behavior of the enumeration strategy, see [defaultEnumOptions.m](https://github.com/MetExplore/dexom/blob/master/src/methods/defaultEnumOptions.m)
 
 ## Citation
 
