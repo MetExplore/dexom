@@ -21,7 +21,15 @@ function dexomInit(cobraToolboxInitMode, verbose)
     ver = dexomVersion();
     removedPath = [];
     fprintf('\nDEXOM: Diversity-based Extraction of Optimal Metabolic-networks (v%s)\n', ver);
-    fprintf('This version was tested with Matlab 2015b (CPLEX v12.8), 2018a (CPLEX v12.9), 2018b (CPLEX v12.8) and COBRA Toolbox v3.0.6 on Windows 10.\n\n');
+    fprintf('This version was tested with Matlab 2015b (CPLEX v12.8), 2018a (CPLEX v12.9),\n');
+    fprintf('2018b (CPLEX v12.8) and COBRA Toolbox v3.0.6 on Windows 10.\n');
+    
+    paperLink = 'https://doi.org/10.1101/2020.07.17.208918';
+    if usejava('desktop')
+        paperLink = ['<a href=\"', paperLink, '\">', paperLink, '</a>'];
+    end
+    fprintf(['Research paper: ', paperLink, '\n\n']);
+    
     fprintf('> Initializing DEXOM library for Matlab\n');
     PROJDIR = fileparts(which('dexomInit'));
     addpath(PROJDIR);
