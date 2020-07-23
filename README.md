@@ -13,7 +13,7 @@ In order to use DEXOM, you need a compatible version of Matlab (recommended vers
 git clone --recurse-submodules="modules/cobratoolbox" https://github.com/MetExplore/dexom.git
 ```
 
-Once cloned, open the dexom folder in matlab and run the initialization script `dexomInit.m`. By default, it removes from your Matlab's path your current COBRA Toolbox and replaces it with the embedded COBRA Toolbox v3.0.6. This is done in order to prevent incompatibilities with other versions. If you want to try to set up everything using your own COBRA Toolbox installation, run `dexomInit(1)`. You can also automatically replace the embedded version with your previous COBRA Toolbox by running `restoreCobraToolboxPath` before initializing DEXOM with `dexomInit`.
+Once cloned, open the dexom folder in matlab and run the initialization script `dexomInit.m`. By default, it removes from your Matlab's path your current COBRA Toolbox and replaces it with the embedded COBRA Toolbox v3.0.6. This is done in order to prevent incompatibilities with other versions. If you want to try to set up everything using your own COBRA Toolbox installation, run `dexomInit(1)`. You can also automatically replace the embedded version with your previous COBRA Toolbox by running `restoreCobraToolboxPath` after initializing DEXOM having used `dexomInit`.
 
 ```
 >> dexomInit;
