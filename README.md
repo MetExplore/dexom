@@ -42,6 +42,9 @@ The method requires at least 3 things to work: a Genome-Scale Metabolic Network 
 The library includes some toy models for testing the algorithm. Here is an example to enumerate 5 optimal metabolic sub-networks in the DAG model introduced in the research paper:
 
 ```matlab
+% Make sure dexom is loaded with the embedded COBRA Toolbox v3.0.6
+dexomInit;
+% Create a DAG metabolic network with 5 layers and 4 metabolites per layer
 model = dagNet(5,4);
 enumOptions.maxUniqueSolutions = 5;
 % Indexes of the reactions in the model that are associated
