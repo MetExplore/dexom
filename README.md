@@ -17,14 +17,16 @@ Once cloned, open the dexom folder in matlab and run the initialization script `
 
 ```
 >> dexomInit;
-DEXOM: Diversity-based enumeration of optimal context-specific metabolic networks (v0.1.0)
-This library was tested using Matlab 2015b, CPLEX v12.8 and COBRA Toolbox v3.0.6.
+
+DEXOM: Diversity-based Extraction of Optimal Metabolic-networks (v0.1.0)
+This version was tested with Matlab 2015b (CPLEX v12.8), 2018a (CPLEX v12.9), 2018b (CPLEX v12.8) and COBRA Toolbox v3.0.6 on Windows 10.
 
 > Initializing DEXOM library for Matlab
  + Adding external dependencies...
-	> Trying to initialize COBRA Toolbox ... Done (already loaded)
+ + Checking and replacing previous COBRA Toolbox installations... 0 entries removed.
+ + Initializing the embedded COBRA Toolbox (use dexomInit(0,1) to show log)...
 > IBM CPLEX selected as the default solver (v128)
-> Testing DEXOM ... Done.
+> Testing DEXOM (solver ibm_cplex) ... Done.
 > DEXOM is ready to use.
 ```
 
