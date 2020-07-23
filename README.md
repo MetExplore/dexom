@@ -37,7 +37,7 @@ During the initialization, DEXOM launches a few quick tests for network reconstr
 
 The usage of DEXOM is similar to any of the context-specific network reconstruction & data integration methods included in COBRA Toolbox. If you are not familiar with these methods, the tutorial "[Extraction of context-specific models](https://opencobra.github.io/cobratoolbox/stable/tutorials/tutorialExtractionTranscriptomic.html)" is a good starting point.
 
-The method requires at 3 things to work: a Genome-Scale Metabolic Network (GSMN), a list of reactions associated with highly expressed enzymes, and a list of reactions associated with lowly expressed enzymes. By default, DEXOM uses the same objective function as the one used by the iMAT algorithm, i.e., it tries to extract sub-networks from the provided GSMN maximizing the selection of reactions associated with highly expressed enzymes, and minimizing the inclusion of reactions associated with lowly expressed enzymes.
+The method requires at least 3 things to work: a Genome-Scale Metabolic Network (GSMN), a list of reactions associated with highly expressed enzymes, and a list of reactions associated with lowly expressed enzymes. By default, DEXOM uses the same objective function as the one used by the iMAT algorithm, i.e., it tries to extract sub-networks from the provided GSMN maximizing the selection of reactions associated with highly expressed enzymes, and minimizing the inclusion of reactions associated with lowly expressed enzymes.
 
 The library includes some toy models for testing the algorithm. Here is an example to enumerate 5 optimal metabolic sub-networks in the DAG model introduced in the research paper:
 
