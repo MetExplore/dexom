@@ -75,7 +75,23 @@ assert (sum(fluxConsistentRxnBool == 0) == 0)
 
 The algorithm is highly customizable. Options are divided in two different structures, one containing the options for the context-specific method, and another with the configuration for the enumeration of alternative optimal solutions. For more information about the possible parameters of the method, see [dexomDefaultOptions.m](https://github.com/MetExplore/dexom/blob/master/src/methods/dexom/dexomDefaultOptions.m), and for the possible parameters to adjust the behavior of the enumeration strategy, see [defaultEnumOptions.m](https://github.com/MetExplore/dexom/blob/master/src/methods/defaultEnumOptions.m)
 
-## Citation
+## Reproducibility of the experiments
+
+The library includes a submodule with the data and all the output files (matlab files and exported csv files). Scripts to reproduce all the steps described in the research paper are also available in the [evaluation]() folder. To clone the repository with all the data used in the experiments as well as the files resulting from the reconstruction, use the following git command:
+
+```
+git clone --recursive https://github.com/MetExplore/dexom.git
+```
+
+The scripts to reproduce the analysis are:
+
+* [scriptEvaluationSamplingDAG.m](https://github.com/MetExplore/dexom/blob/master/src/evaluation/scriptEvaluationSamplingDAG.m). This script contains the code to sample up to 250 unique solutions in the DAG network model.
+* [scriptEvaluationSamplingYeast6.m](https://github.com/MetExplore/dexom/blob/master/src/evaluation/scriptEvaluationSamplingYeast6.m). Contains the code to perform reconstruction using the Yeast 6 model with random sets of highly expressed and lowly expressed genes.
+* [scriptYeastEvaluation.m](https://github.com/MetExplore/dexom/blob/master/src/evaluation/scriptYeastEvaluation.m). Script to generate and evaluate the ensembles to predict essential genes in yeast using the Yeast 6 model.
+
+Note that there is some amount of randomness involved in the reconstruction process, depending on the solver version/model and configuration. Small variations of the results are expected between simulations.
+
+## How to cite
 
 If you find this software useful, please consider citing it as:
 
