@@ -33,6 +33,42 @@ This version was tested with Matlab 2015b (CPLEX v12.8), 2018a (CPLEX v12.9),
 
 During the initialization, DEXOM launches a few quick tests for network reconstruction and enumeration. After getting the previous message, the library is ready to use.
 
+## Quick start
+
+The usage of DEXOM is similar to any of the context-specific network reconstruction & data integration methods included in COBRA Toolbox. If you are not familiar with these methods, the tutorial "[Extraction of context-specific models](https://opencobra.github.io/cobratoolbox/stable/tutorials/tutorialExtractionTranscriptomic.html)" is a good starting point.
+
+The method requires at 3 things to work: a Genome-Scale Metabolic Network (GSMN), a list of reactions associated with highly expressed enzymes, and a list of reactions associated with lowly expressed enzymes. By default, DEXOM uses the same objective function as the one used by the iMAT algorithm, i.e., it tries to extract sub-networks from the provided GSMN maximizing the selection of reactions associated with highly expressed enzymes, and minimizing the inclusion of reactions associated with lowly expressed enzymes.
+
+The library includes some toy models for testing the algorithm. Here is an example to enumerate 5 optimal metabolic sub-networks in the DAG model introduced in the research paper:
+
+```matlab
+model = dagNet(5,4);
+enumOptions.maxUniqueSolutions = 5;
+% Indexes of the reactions in the model that are associated
+% with highly expressed enzymes
+methodOptions.RHindex = [];
+% Indexes of the reactions in the model that are associated
+% with lowly expressed enzymes. For this toy example, all rxn
+% are assumed to be associated with lowly abundant enzymes
+methodOptions.RLindex = 1:length(model.rxns);
+results = dexom(model, methodOptions, enumOptions);
+```
+
+The method returns a structure with many outputs that are usefu for posterior analysis of the results. In order to extract the unique solutions as row binary vectors (indicating with 1s the selected reactions from the model), you can use the method `getUniqueAcceptedSolutions`:
+
+```matlab
+solutions = getUniqueAcceptedSolutions(results);
+% Extract the first optimal context-specific model
+selectedRxn = solutions(1,:);
+cModel1 = removeRxns(model, model.rxns(selectedRxn == 0));
+% Test that the model is flux consistent
+cOpts.epsilon=1e-6;
+cOpts.modeFlag=0;
+cOpts.method='fastcc';
+[~,fluxConsistentRxnBool] = findFluxConsistentSubset(cModel1, cOpts);
+assert (sum(fluxConsistentRxnBool == 0) == 0)
+```
+
 ## Citation
 
 If you find this software useful, please consider citing it as:
