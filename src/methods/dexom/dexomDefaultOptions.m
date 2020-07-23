@@ -40,8 +40,7 @@ function options = dexomDefaultOptions()
     % Random seed for the solver (only CPLEX/GUROBI).
     % NOTE: Selecting one rseed affects the performance of CPLEX 12.8, it
     % is recommended to leave rseed as NaN unless you are interested in
-    % having more chances of generating different solutions with
-    % exomSampling.
+    % having more chances of generating different solutions.
     options.rseed=NaN;
     % If set to 1, generate a new options.rseed in each call
     options.useRandomSeed = 0;
