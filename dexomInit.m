@@ -8,7 +8,11 @@ function dexomInit(cobraToolboxInitMode, verbose)
     global CBT_MILP_SOLVER;
     global ENV_VARS;
     
-    printLevel = ENV_VARS.printLevel;
+    if ~isempty(ENV_VARS)
+        printLevel = ENV_VARS.printLevel;
+    else
+        printLevel = 0;
+    end
     
     if ~exist('cobraToolboxInitMode','var') || isempty(cobraToolboxInitMode)
         cobraToolboxInitMode = 0;
