@@ -47,14 +47,15 @@ globalOptions.method.printLevel = 0;
 
 % ENUM OPTIONS
 globalOptions.enum.metricsUpdateFrequency = 1e-8;
-globalOptions.enum.maxIterations = 10;
+globalOptions.enum.maxIterations = 2500;
 globalOptions.enum.maxEnumTime = 60 * 60 * 8;
 % Optimal tolerance for accepting solutions during enumeration
 %globalOptions.enum.optTol = globalOptions.solver.relMipGapTol * 1.5;
 globalOptions.enum.optTol = 0.01;
 globalOptions.enum.verbose = 1;
 globalOptions.enum.maxTries = 100;
-globalOptions.enum.maxUniqueSolutions = 10;
+globalOptions.enum.maxUniqueSolutions = 2000;
+globalOptions.enum.maxSolutions = 2500;
 
 % Configure the solver
 changeCobraSolver(globalOptions.solverName,'all',0);
