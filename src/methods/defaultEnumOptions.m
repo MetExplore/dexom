@@ -40,7 +40,7 @@ function enumOptions = defaultEnumOptions()
 % solutios, the distances are recalculated.
 enumOptions.metricsUpdateFrequency = 0;
 enumOptions.maxIterations = 1000;
-enumOptions.maxEnumTime = 60;
+enumOptions.maxEnumTime = 3600;
 enumOptions.maxSolutions = 1000;
 enumOptions.optTol = 1e-4;
 enumOptions.enumStrategy = 'default';
