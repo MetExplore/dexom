@@ -48,6 +48,7 @@ dexomInit;
 % Create a DAG metabolic network with 5 layers and 4 metabolites per layer
 model = dagNet(5,4);
 enumOptions.maxUniqueSolutions = 5;
+enumOptions.maxEnumTime = 120;
 % Indexes of the reactions in the model that are associated
 % with highly expressed enzymes
 methodOptions.RHindex = [];
