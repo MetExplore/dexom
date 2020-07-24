@@ -48,6 +48,7 @@ dexomInit;
 % Create a DAG metabolic network with 5 layers and 4 metabolites per layer
 model = dagNet(5,4);
 enumOptions.maxUniqueSolutions = 5;
+enumOptions.maxEnumTime = 120;
 % Indexes of the reactions in the model that are associated
 % with highly expressed enzymes
 methodOptions.RHindex = [];
@@ -77,7 +78,7 @@ The algorithm is highly customizable. Options are divided in two different struc
 
 ## Reproducibility of the experiments
 
-The library includes a submodule with the data and all the output files (matlab files and exported csv files). Scripts to reproduce all the steps described in the research paper are also available in the [evaluation]() folder. To clone the repository with all the data used in the experiments as well as the files resulting from the reconstruction, use the following git command:
+The library includes a [submodule](https://github.com/MetExplore/dexom-evaluation) with all the data and the output files (matlab files and exported csv files). Scripts to reproduce all the steps described in the research paper are also available in [src/evaluation](https://github.com/MetExplore/dexom/tree/master/src/evaluation). To clone the repository with all the data used in the experiments as well as the files resulting from the reconstruction, use the following git command:
 
 ```
 git clone --recursive https://github.com/MetExplore/dexom.git

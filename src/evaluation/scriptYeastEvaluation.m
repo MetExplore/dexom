@@ -17,8 +17,8 @@ diary ON;
 
 %% Parametes and configuration to run the reconstruction
 studyDataFile = [path filesep 'data' filesep 'yeast' filesep 'rintalaYeast2009'];
-%modelFile = [path filesep 'data' filesep 'yeast' filesep 'gem_yeast6_06_reduced'];
-modelFile = [path filesep 'data' filesep 'yeast' filesep 'gem_yeast8_35_reduced'];
+modelFile = [path filesep 'data' filesep 'yeast' filesep 'gem_yeast6_06_reduced'];
+%modelFile = [path filesep 'data' filesep 'yeast' filesep 'gem_yeast8_35_reduced'];
 essentialDatasetFile = [path filesep 'data' filesep 'yeast' filesep 'dataset_yeast6_v1.0.7.csv'];
 
 globalOptions = struct;
