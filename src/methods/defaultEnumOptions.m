@@ -34,8 +34,9 @@ function enumOptions = defaultEnumOptions()
 % * maxTries (default 6). The search for optimal solutions is subject to 
 % a certain degree of randomness. Certain problems may not be easy to solve 
 % in the maximum time established, making the problem infeasible. maxTries 
-% indicates the maximum amount of iterations that are executed after a 
-% problem is detected infeasible.
+% indicates the maximum amount of iterations that are executed until we
+% assume that the problem is unfeasible and there are no more solutions to
+% enumerate.
 % * metricsDistance (default 'hamming'). Distance function used to compute
 % pairwise distance and nearest neighbor distance in the set of optimal
 % solutions. Each time a new solution is added to the set of optimal
