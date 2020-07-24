@@ -109,5 +109,9 @@ If you find this software useful, please consider citing it as:
 }
 ```
 
+By default, DEXOM uses the original iMAT objective function to optimize a trade-off between selection of reactions associated with highly expressed enzymes and removal of reactions associated with lowly expressed enzymes. If you use this approach (default configuration), please consider citing iMAT as well:
+
+> Shlomi T, Cabili MN, Herrg˚ard MJ, Palsson BØ, Ruppin E. [Network-based prediction of human tissue-specific metabolism](https://www.nature.com/articles/nbt.1487). 
+Nature biotechnology. 2008;26(9):1003.
 
 
