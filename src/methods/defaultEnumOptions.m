@@ -12,6 +12,8 @@ function enumOptions = defaultEnumOptions()
 % Unique solutions are updated using the metricsUpdateFrequency (in
 % seconds). Every X seconds, metrics are updated. At this point, if unique
 % solutions are above the threshold, the search is stopped.
+% * maxEnumTime (default 3600). Maximum time (in seconds) for the
+% enumeration of alternative optimal solutions.
 % * metricsUpdateFrequency (default 0). Update frequency of metrics 
 % (in seconds), such as number of unique solutions, 
 % distance between solutions, etc. A value < 0 disables the calculation of
