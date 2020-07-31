@@ -59,7 +59,7 @@ methodOptions.RLindex = 1:length(model.rxns);
 results = dexom(model, methodOptions, enumOptions);
 ```
 
-The method returns a structure with the results and many other useful output values for posterior analysis of the results. A quick verification to check that you obtained the correct solutions is to check the optimal objective score for each solution, which should be 66. This score comes from the fact that the network contains 74 reactions, all associated with lowly expressed genes, and the smallest flux consistent metabolic network minimizing the set of lowly expressed enzymes has a size of 8 reactions, 74 - 8 = 66):
+The method returns a structure with the results and many other useful output values for posterior analysis of the results. A quick verification to check that you obtained the correct solutions is to check the optimal objective score for each solution, which should be 66. This score comes from the fact that the network contains 74 reactions, all associated with lowly expressed genes, and the smallest flux consistent metabolic network minimizing the set of lowly expressed enzymes has a size of 8 reactions. By default, DEXOM uses the iMAT objective function to minimize the number of reactions associated with lowly expressed enzymes (RL), and to maximize the number of reactions associated with higly expressed enzymes (RH), score = Num. selected RH + Num. non-selected RL, in this case this makes 74 - 8 = 66:
 
 ```
 >> results.objectives
