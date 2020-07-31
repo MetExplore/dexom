@@ -59,7 +59,32 @@ methodOptions.RLindex = 1:length(model.rxns);
 results = dexom(model, methodOptions, enumOptions);
 ```
 
-The method returns a structure with the results and many other useful output values for posterior analysis of the results. In order to extract the unique solutions as row binary vectors (indicating with 1s the selected reactions from the model), you can use the method `getUniqueAcceptedSolutions`:
+The method returns a structure with the results and many other useful output values for posterior analysis of the results. A quick verification to check that you obtained the correct solutions is to check the optimal objective score for each solution, which should be 66. This score comes from the fact that the network contains 74 reactions, all associated with lowly expressed genes, and the smallest flux consistent metabolic network minimizing the set of lowly expressed enzymes has a size of 8 reactions, 74 - 8 = 66):
+
+```
+>> results.objectives
+
+ans =
+
+    66    66    66    66    66
+```
+
+You can double check this by checking the number of reactions, which should be 8 reactions for every optimal solution
+
+```
+>> sum(results.solutions==1, 2)
+
+ans =
+
+     8
+     8
+     8
+     8
+     8
+```
+
+
+In order to extract the unique solutions as row binary vectors (indicating with 1s the selected reactions from the model), you can use the method `getUniqueAcceptedSolutions`:
 
 ```matlab
 solutions = getUniqueAcceptedSolutions(results);
