@@ -1,3 +1,6 @@
+% Script for reproducing the evaluation using the DAG example
+% https://www.biorxiv.org/content/10.1101/2020.07.17.208918v1
+
 % TESTED ONLY WITH IBM_CPLEX
 % changeCobraSolver('ibm_cplex','all',0);
 
@@ -51,8 +54,6 @@ for j = 1:numRuns
     end
     %save([outputPath filesep 'temporalResults'], 'results', '-v7.3');
 end
-
-
 
 outputResults = struct;
 outputResults.results = results;

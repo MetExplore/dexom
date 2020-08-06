@@ -17,8 +17,8 @@ diary ON;
 
 %% Parametes and configuration to run the reconstruction
 studyDataFile = [path filesep 'data' filesep 'yeast' filesep 'rintalaYeast2009'];
-modelFile = [path filesep 'data' filesep 'yeast' filesep 'gem_yeast6_06_reduced'];
-%modelFile = [path filesep 'data' filesep 'yeast' filesep 'gem_yeast8_35_reduced'];
+%modelFile = [path filesep 'data' filesep 'yeast' filesep 'gem_yeast6_06_reduced'];
+modelFile = [path filesep 'data' filesep 'yeast' filesep 'gem_yeast8_35_reduced'];
 essentialDatasetFile = [path filesep 'data' filesep 'yeast' filesep 'dataset_yeast6_v1.0.7.csv'];
 
 globalOptions = struct;
@@ -44,6 +44,7 @@ globalOptions.method.tol = 1e-6;
 globalOptions.method.epsilon = 1e-4;
 globalOptions.method.runtime = globalOptions.solver.timeLimit;
 globalOptions.method.printLevel = 0;
+globalOptions.method.distAnnealing = 0.995;
 
 % ENUM OPTIONS
 globalOptions.enum.metricsUpdateFrequency = 1e-8;
@@ -82,7 +83,6 @@ thresholds = [0.10 0.90; 0.10 0.85; 0.10 0.80; 0.10 0.75;
               0.20 0.90; 0.20 0.85; 0.20 0.80; 0.20 0.75;
               0.25 0.90; 0.25 0.85; 0.25 0.80; 0.25 0.75]; 
           
-thresholds = [0.10 0.90];
 methods = {'dexom-default';'dexom-rxnenum';'dexom-maxdist';'dexom-icut'};
                
 mediums = {'full'};

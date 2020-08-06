@@ -39,7 +39,7 @@ function dexomInit(cobraToolboxInitMode, verbose)
     addpath(PROJDIR);
     addpath(genpath([PROJDIR filesep 'src']));
     addpath(genpath([PROJDIR filesep 'test']));
-    addpath(genpath([PROJDIR filesep 'evaluation']));
+    addpath(genpath([PROJDIR filesep 'modules' filesep 'evaluation']));
     cd(PROJDIR);
     fprintf(' + Adding external dependencies...\n');
     if cobraToolboxInitMode == -1 && isempty(SOLVERS)
