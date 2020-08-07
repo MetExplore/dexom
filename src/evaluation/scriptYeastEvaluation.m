@@ -61,7 +61,7 @@ globalOptions.enum.optTol = 0.01;
 globalOptions.enum.verbose = 1;
 globalOptions.enum.maxTries = 100;
 globalOptions.enum.maxUniqueSolutions = 2000;
-globalOptions.enum.maxSolutions = 25;
+globalOptions.enum.maxSolutions = 2500;
 
 % Configure the solver
 changeCobraSolver(globalOptions.solverName,'all',0);
