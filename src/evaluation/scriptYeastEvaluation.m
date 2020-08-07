@@ -1,3 +1,8 @@
+dexomInit;
+
+% TESTED ONLY WITH IBM_CPLEX
+changeCobraSolver('ibm_cplex','all',0);
+
 %% LOG
 path = fileparts(which('evaluation.md'));
 folderName = datestr(now,'dd-mm-yyyy');
@@ -17,8 +22,8 @@ diary ON;
 
 %% Parametes and configuration to run the reconstruction
 studyDataFile = [path filesep 'data' filesep 'yeast' filesep 'rintalaYeast2009'];
-modelFile = [path filesep 'data' filesep 'yeast' filesep 'gem_yeast6_06_reduced'];
-%modelFile = [path filesep 'data' filesep 'yeast' filesep 'gem_yeast8_35_reduced'];
+%modelFile = [path filesep 'data' filesep 'yeast' filesep 'gem_yeast6_06_reduced'];
+modelFile = [path filesep 'data' filesep 'yeast' filesep 'gem_yeast8_35_reduced'];
 essentialDatasetFile = [path filesep 'data' filesep 'yeast' filesep 'dataset_yeast6_v1.0.7.csv'];
 
 globalOptions = struct;
@@ -56,7 +61,7 @@ globalOptions.enum.optTol = 0.01;
 globalOptions.enum.verbose = 1;
 globalOptions.enum.maxTries = 100;
 globalOptions.enum.maxUniqueSolutions = 2000;
-globalOptions.enum.maxSolutions = 2500;
+globalOptions.enum.maxSolutions = 25;
 
 % Configure the solver
 changeCobraSolver(globalOptions.solverName,'all',0);

@@ -1,5 +1,6 @@
 function results = runExperiments(model, dataset, conditions, methods, thresholds, ...
     mediums, biomasses, globalOptions, storeFolder)
+    global CBT_LP_SOLVER;
     
     storeOutput = 0;
     if exist('storeFolder','var')
@@ -92,7 +93,10 @@ function results = runExperiments(model, dataset, conditions, methods, threshold
         cgRatios = cell(1, numSolutions);
         cScores = cell(1, numSolutions);
         
+        environment = getEnvironment();
         parfor j = 1:numSolutions
+            restoreEnvironment(environment);
+            changeCobraSolver(CBT_LP_SOLVER, 'LP', 0, -1); 
             s = solutions(j,:);
             fprintf('Simulating WT vs KO growth on network %04d (%d rxn) ... ', j, sum(s));
             grRatios = simulateKO(m, s); 

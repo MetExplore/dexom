@@ -4,6 +4,9 @@
 % Make sure that DEXOM is initialized
 dexomInit;
 
+% TESTED ONLY WITH IBM_CPLEX
+%changeCobraSolver('ibm_cplex','all',0);
+
 % Set to 1 to use integer-cuts to perform full enumeration
 fullEnumeration = 0;
 

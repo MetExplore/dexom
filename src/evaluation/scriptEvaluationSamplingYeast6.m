@@ -1,6 +1,8 @@
 % Script for reproducing the evaluation using the DAG example
 % https://www.biorxiv.org/content/10.1101/2020.07.17.208918v1
 
+dexomInit;
+
 % TESTED ONLY WITH IBM_CPLEX
 % changeCobraSolver('ibm_cplex','all',0);
 
