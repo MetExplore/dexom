@@ -164,6 +164,16 @@ function MILPproblem = dexomCreateMILP(model, options)
     % For the binary variables, put ones in all to count them in the
     % objective function (if the goal is to maximize coverage of RH+RL)
     c_y = ones(2*length(RHindex)+length(RLindex),1);
+    
+    % Add custom weights
+    if ~isempty(options.rhWeights)
+        c_y(1:length(RHindex)) = options.rhWeights;
+        c_y((length(RHindex) + length(RLindex) + 1):end) = options.rhWeights;
+    end
+    if ~isempty(options.rlWeights)
+        c_y(length(RHindex):length(RHindex)+length(RLindex)+1) = options.rlWeights;
+    end
+    
     % Maximize differences between the reference solution and the candidate
     % by calculating the hamming distance (since the obj is c'x, we need to
     % set c based on the reference solution so c'x returns the total

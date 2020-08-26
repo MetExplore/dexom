@@ -45,6 +45,11 @@ function options = dexomDefaultOptions()
     % If set to 1, generate a new options.rseed in each call
     options.useRandomSeed = 0;
     options.excludeSolutionsByIntegerCuts = 1;
+    % Assign weights to each reaction. If empty (default) each reaction has
+    % the same weight in the optimization process (adding a RH reaction or
+    % removing a RL reaction increases the score by 1)
+    options.rhWeights = [];
+    options.rlWeights = [];
     % If set to 1, change the objective function to maximize the
     % differences with a reference solution provided
     options.useSecondaryObjective = 0;
