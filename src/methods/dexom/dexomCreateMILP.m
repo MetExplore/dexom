@@ -171,7 +171,7 @@ function MILPproblem = dexomCreateMILP(model, options)
         c_y((length(RHindex) + length(RLindex) + 1):end) = options.rhWeights;
     end
     if ~isempty(options.rlWeights)
-        c_y(length(RHindex):length(RHindex)+length(RLindex)+1) = options.rlWeights;
+        c_y(length(RHindex)+1:length(RHindex)+length(RLindex)) = options.rlWeights;
     end
     
     % Maximize differences between the reference solution and the candidate
