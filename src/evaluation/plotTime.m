@@ -1,5 +1,15 @@
+% Script to export the time of each method used for the Yeast 6 evaluation
+% Note that this scripts takes a zip file with the results and generates
+% the CSV. The evaluation module contains the required zip file in
+% evaluation/yeast/essential_genes/yeast6-evaluation/matlab/dexom-yeast6-eval-matlab.zip
+% This file is a multipart-zip file that should be converted to a single
+% zip file as Matlab cannot extract these types of zip files.
+
+% Exported files are located in the dexom-yeast6-eval-export-csv.zip file
+
 tmp = tempname();
 mkdir(tmp);
+% Name of the single zip file with all the results
 unzip('yeast6-evaluation-nogit.zip', tmp);
 files = dir([tmp filesep '07-06-2020/*-th-0.25-0.75-*.mat']);
 figure;

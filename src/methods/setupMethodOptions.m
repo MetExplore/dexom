@@ -36,18 +36,18 @@ function options = setupMethodOptions(methodName, methodOptions, enumOptions)
                     % of minimizing it
                     mo.secondaryObjectiveMode = 'maxdist';
                     mo.excludeSolutionsByIntegerCuts = 1;
-                case 'default'
+                case {'default','diversity'}
                     % Start with default enum
                     eo.enumStrategy = 'random';
                     mo.useSecondaryObjective = 1;
                     mo.secondaryObjectiveMode = 'dexom';
                     mo.excludeSolutionsByIntegerCuts = 1;
-                case 'default/norand'
+                case {'default/norand','diversity/norand'}
                     eo.enumStrategy = 'default';
                     mo.useSecondaryObjective = 1;
                     mo.secondaryObjectiveMode = 'dexom';
                     mo.excludeSolutionsByIntegerCuts = 1;    
-                case 'default/nocuts'
+                case {'default/nocuts','diversity/nocuts'}
                     % Start with default enum
                     eo.enumStrategy = 'none';
                     mo.useSecondaryObjective = 1;
@@ -63,6 +63,12 @@ function options = setupMethodOptions(methodName, methodOptions, enumOptions)
                     mo.excludeSolutionsByIntegerCuts = 0; 
                     eo.enumGreedySkipReactions = 0;
                     eo.enumStrategy = 'random';
+                    mo.useDefaultIterativeModelConstraintUpdate = 1;
+                case 'rxnenum/norand'
+                    mo.useSecondaryObjective = 0;
+                    mo.excludeSolutionsByIntegerCuts = 0; 
+                    eo.enumGreedySkipReactions = 0;
+                    eo.enumStrategy = 'default';
                     mo.useDefaultIterativeModelConstraintUpdate = 1;
                 otherwise
                     error('Unknown DEXOM method');
