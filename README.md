@@ -1,5 +1,6 @@
 # DEXOM 
 [![BioRxiv](https://img.shields.io/badge/BioRxiv-2020.07.17.208918-brightgreen)](https://www.biorxiv.org/content/10.1101/2020.07.17.208918v1)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4279170.svg)](https://doi.org/10.5281/zenodo.4279170)
 > Diversity-based enumeration of optimal context-specific metabolic networks
 
 DEXOM is a Matlab library for the reconstruction and enumeration of diverse optimal context-specific metabolic networks. It requires COBRA Toolbox (included as submodule) and a MILP solver (CPLEX, Gurobi).
