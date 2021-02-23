@@ -35,8 +35,9 @@ function [result, usedOptions] = dexom(model, methodOptions, enumOptions)
 %
 % OUTPUT:
 %    result:            structure with the result of the enumeration.
-
-    methodOptions.name = 'dexom-default';
+    if ~isfield(methodOptions,'name')
+        methodOptions.name = 'dexom-default';
+    end
     if ~exist('enumOptions','var'), enumOptions = struct; end 
     o = setupMethodOptions(methodOptions.name, methodOptions, enumOptions);
     result = sequentialNetworkEnumeration(model, o);
