@@ -65,6 +65,15 @@ function MILPproblem = dexomCreateMILP(model, options)
     lb = model.lb;
     ub = model.ub;
 
+    if isempty(RHindex)
+        senseRH = [];
+        numRH = [];
+    end
+    if isempty(RLindex)
+        senseRL = [];
+        numRL = [];
+    end
+
     % Create the A matrix (constraint equations x variables) Ax <=> b
     %
     % Same A matrix as in the original iMAT code +2 rows, one for the numRL
@@ -103,8 +112,9 @@ function MILPproblem = dexomCreateMILP(model, options)
         A(lastRow+1,i+size(S,2)) = 1;
     end
 
+    lastRow = size(A, 1);
     for i = 1:length(RLindex)
-        A(lastRow+2, i+size(S,2)+length(RHindex)) = 1;
+        A(lastRow+1, i+size(S,2)+length(RHindex)) = 1;
     end
     
     % Alternatively, use fitScore to put a min constraint on the RH+RL
@@ -151,7 +161,7 @@ function MILPproblem = dexomCreateMILP(model, options)
     csenseFitScore = 'G';
     csense6(1:size(options.exclude,1)) = 'L'; % All less or eq for options.exclude
     csense = [csense1 csense2 csense3 csense4 csense5 senseRH senseRL csenseFitScore csense6];
-
+    
 
     % Creating lb and ub
     lb_y = zeros(2*length(RHindex)+length(RLindex),1);

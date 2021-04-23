@@ -28,7 +28,7 @@ function dexomInit(cobraToolboxInitMode, verbose)
     fprintf('This version was tested with Matlab 2015b (CPLEX v12.8), 2018a (CPLEX v12.9),\n');
     fprintf('2018b (CPLEX v12.8) and COBRA Toolbox v3.0.6 on Windows 10.\n');
     
-    paperLink = 'https://doi.org/10.1101/2020.07.17.208918';
+    paperLink = 'https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008730';
     if usejava('desktop')
         paperLink = ['<a href=\"', paperLink, '\">', paperLink, '</a>'];
     end

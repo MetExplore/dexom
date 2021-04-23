@@ -2,7 +2,9 @@ function solution = dexomSolveCobraMILP(MILPproblem, options)
     global CBT_MILP_SOLVER;
     % Add solver-specific configuration
     if options.useRandomSeed, options.rseed = randi(intmax('int16')); end
-    options.solver = struct;
+    if ~isfield(options,'solver')
+        options.solver = struct;
+    end
     if strcmp(CBT_MILP_SOLVER, 'ibm_cplex')
         options.solver.output.clonelog = -1;
         options.solver.workdir = tempdir();
