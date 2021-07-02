@@ -18,7 +18,7 @@ function solution = dexomSolveCobraMILP(MILPproblem, options)
     elseif isempty(CBT_MILP_SOLVER)
         error('Undefined solver');
     end
-    solution = solveCobraMILP(MILPproblem, options.solver);
+    solution = solveCobraMILP(MILPproblem,'timeLimit', options.runtime, options.solver);
     % Round to avoid having precision errors in the output.
     solution.int = round(solution.int);
 end
